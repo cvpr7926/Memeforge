@@ -89,3 +89,4 @@ npm start
 **Note:** Share links + reactions use `data/memes.json` locally. On Vercel serverless, file writes may not persist between requests — fine for demoing upload → forge → edit; for full share/wall in prod add [Vercel KV](https://vercel.com/docs/storage/vercel-kv) later.
 
 Check: `GET /api/health` → `anthropicKey: "configured"`
+# MemeForge
