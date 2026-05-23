@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #07060f;
+  --paper: #f8f6ff;
+  --neon: #00f5d4;
+  --punch: #ff2d6a;
+  --sun: #ffe600;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  min-height: 100dvh;
+}
+
+::selection {
+  background: var(--neon);
+  color: var(--ink);
+}
+
+/* Grain overlay */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.mesh-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(124, 58, 237, 0.35), transparent 50%),
+    radial-gradient(ellipse 70% 50% at 90% 10%, rgba(255, 45, 106, 0.25), transparent 45%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(0, 245, 212, 0.15), transparent 50%),
+    var(--ink);
+}
+
+.studio-panel {
+  background: linear-gradient(145deg, rgba(26, 22, 40, 0.95), rgba(12, 10, 20, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 0 1px rgba(0, 245, 212, 0.05),
+    0 24px 80px rgba(0, 0, 0, 0.6);
+}
+
+.text-stroke {
+  -webkit-text-stroke: 2px rgba(0, 0, 0, 0.8);
+  paint-order: stroke fill;
+}
+
+.meme-caption {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-marquee-gpu {
+    animation: marquee 70s linear infinite;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--paper) 0%,
+    var(--neon) 25%,
+    var(--punch) 50%,
+    var(--sun) 75%,
+    var(--paper) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}
